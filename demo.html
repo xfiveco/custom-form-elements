@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Custom form elements - Demo</title>
+  <link rel="stylesheet" type="text/css" href="jquery.form.css">
+  <!-- <link rel="stylesheet" type="text/css" href="jquery.form.select.min.css"> -->
+
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+
+  <script type="text/javascript" src="jquery.form.js"></script>
+  <!-- <script type="text/javascript" src="jquery.form.min.js"></script> -->
+
+  <!-- <script type="text/javascript" src="jquery.form.placeholder.js"></script> -->
+  <!-- <script type="text/javascript" src="jquery.form.placeholder.min.js"></script> -->
+
+  <!-- <script type="text/javascript" src="jquery.form.checkbox_radio.js"></script> -->
+  <!-- <script type="text/javascript" src="jquery.form.checkbox_radio.min.js"></script> -->
+  <!-- <link rel="stylesheet" type="text/css" href="jquery.form.checkbox_radio.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="jquery.form.checkbox_radio.min.css"> -->
+
+  <!-- <script type="text/javascript" src="jquery.form.select.js"></script> -->
+  <!-- <script type="text/javascript" src="jquery.form.select.min.js"></script> -->
+  <!-- <link rel="stylesheet" type="text/css" href="jquery.form.select.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="jquery.form.select.min.css"> -->
+</head>
+<body>
+  <div id="intro">
+    <h1>Custom form elements - Demo</h1>
+  </div>
+
+  <form id="examples" action="#" method="get">
+    <h2>Examples</h2>
+    <fieldset>
+      <legend>Placeholders</legend>
+
+      <div class="row">
+        <label for="example-1">Input With Placeholder Text</label>
+        <input type="text" id="example-1" placeholder="This is the placeholder">
+      </div>
+
+      <div class="row">
+        <label for="example-2">Input With a Value</label>
+        <input type="text" id="example-2" placeholder="This is the placeholder" value="This is the value">
+      </div>
+
+      <div class="row">
+        <label for="example-3">Textarea With Placeholder Text</label>
+        <textarea id="example-3" placeholder="This is the placeholder" class="textarea"></textarea>
+      </div>
+
+      <div class="row">
+        <label for="example-4">Textarea With a Value</label>
+        <textarea id="example-4" placeholder="This is the placeholder" class="textarea">This is the value</textarea>
+      </div>
+
+      <div class="row">
+        <label for="example-5">Password Input With Placeholder Text</label>
+        <input type="password" id="example-5" placeholder="This is the placeholder">
+      </div>
+
+      <div class="row">
+        <label for="example-6">Password Input With a Value</label>
+        <input type="password" id="example-6" placeholder="This is the placeholder" value="This is the value">
+      </div>
+
+    </fieldset>
+
+    <fieldset>
+      <legend>Selects</legend>
+
+      <div class="row">
+
+        <label for="example-5">Select</label>
+        <select id="example-5">
+          <!-- <option>Pick one...</option> -->
+          <option data-display="&Uuml;no" value="one">Uno</option>
+          <option data-display="D&oslash;s" selected="selected" value="two">Dos</option>
+          <option data-display="Tr&eacute;s" value="three">Tres</option>
+          <option data-display="C&uuml;&aring;tr&oslash;" value="four">Cuatro</option>
+          <option value="five">Cinco</option>
+          <option value="six">Seis</option>
+          <option value="seven">Siete</option>
+          <option value="eight">Ocho</option>
+          <option value="nine">Nueve</option>
+          <option value="ten">Diez</option>
+          <option value="eleven">Once</option>
+          <option value="twelve">Doce</option>
+        </select>
+      </div>
+
+    </fieldset>
+
+    <fieldset>
+      <legend>Checkboxes</legend>
+      <H3>Custom CSS:</H3>
+      <style type="text/css" style="display: block; white-space: pre-wrap; border: solid 1px #666; margin-bottom: 5px; font-family: Monaco, fixed-width; font-size: 9pt;" contentEditable="true">
+  a.my-custom-class {
+    border: red solid 1px;
+  }
+
+  a.my-other-custom-class {
+    border: blue solid 1px;
+  }
+      </style>
+      <div class="row">
+        <input type="checkbox" id="example-6a" name="example-6[]" value="6a" class="my-custom-class" checked="checked"> <label for="example-6a">Example 6a</label>
+        <input type="checkbox" id="example-6b" name="example-6[]" value="6b"> <label for="example-6b">Example 6b</label>
+        <input type="checkbox" id="example-6c" name="example-6[]" value="6c" class="my-other-custom-class" checked="checked"> <label for="example-6c">Example 6c</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Radio Buttons</legend>
+      <div class="row">
+        <input type="radio" id="example-7a" name="example-7" value="7a"> <label for="example-7a">Example 7a</label>
+        <input type="radio" id="example-7b" name="example-7" value="7b" checked="checked"> <label for="example-7b">Example 7b</label>
+        <input type="radio" id="example-7c" name="example-7" value="7c"  class="my-other-custom-class"> <label for="example-7c">Example 7c</label>
+      </div>
+    </fieldset>
+
+    <p><input type="reset" value="Reset"></p>
+  </form>
+
+  <script type="text/javascript">
+    window.onunload = function (){};
+
+    jQuery('select').bind('change', function (event) {
+      try {
+        console.log('Native Select change event fired #' + event.target.id, event);
+      }
+      catch (e) {
+        alert('Native Select change event fired #' + event.target.id);
+      }
+    });
+
+    jQuery('input[type="checkbox"]').bind('change', function (event) {
+      try {
+        console.log('Native Checkbox change event fired #' + event.target.id, event);
+      }
+      catch (e) {
+        alert('Native Checkbox change event fired #' + event.target.id);
+      }
+    });
+
+    jQuery('input[type="radio"]').bind('change', function (event) {
+      try {
+        console.log('Native Radio change event fired #' + event.target.id, event);
+      }
+      catch (e) {
+        alert('Native Radio change event fired #' + event.target.id);
+      }
+    });
+
+    jQuery('input[placeholder], textarea[placeholder]').JSizedFormPlaceholder();
+    jQuery('input[type="checkbox"]').JSizedFormCheckbox({ copyClassName: true });
+    jQuery('input[type="radio"]').JSizedFormRadio({ copyClassName: true });
+    jQuery('select').JSizedFormSelect({ altTextAttribute: 'data-display', maxItems: 6, maxItemsUseMaxHeight: false });
+  </script>
+</body>
+</html>

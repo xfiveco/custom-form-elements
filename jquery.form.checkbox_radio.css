@@ -1,0 +1,6 @@
+a.checkbox { background: #e6e6e6 url(sprite_form_elements.png) -90px -75px no-repeat; display: inline-block; width: 15px; height: 16px; margin-right: 5px; }
+a.checkbox-checked { background-position: -110px -75px; background-color: #ccc; }
+
+/* Custom checkbox and radio inputs */
+a.radio { background: #e6e6e6 url(sprite_form_elements.png) -50px -75px no-repeat; display: inline-block; width: 14px; height: 14px; margin-right:5px; }
+a.radio-checked { background-position: -70px -75px; background-color: #ccc; }
