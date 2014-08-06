@@ -6,7 +6,7 @@
     "XHTMLized <hello@xhtmlized.com>"
   ],
   "description": "Custom form elements styles and polyfills",
-  "main": "./jquery.form.js",
+  "main": "dist/jquery.form.js",
   "keywords": [
     "custom",
     "form",
@@ -20,7 +20,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "*.md",
+    "Gruntfile.js",
+    "package.json"
   ],
   "dependencies": {
     "jquery": ">=1.3.2"
