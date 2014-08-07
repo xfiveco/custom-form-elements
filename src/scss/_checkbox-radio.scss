@@ -1,0 +1,25 @@
+.checkbox {
+  background: #e6e6e6 url(../img/sprite_form_elements.png) -90px -75px no-repeat;
+  display: inline-block;
+  width: 15px;
+  height: 16px;
+  margin-right: 5px;
+
+  &-checked {
+    background-position: -110px -75px;
+    background-color: #ccc;
+  }
+}
+
+.radio {
+  background: #e6e6e6 url(../img/sprite_form_elements.png) -50px -75px no-repeat;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+
+  &-checked {
+    background-position: -70px -75px;
+    background-color: #ccc;
+  }
+}

@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         dest: '<%= paths.dist %>',
         root: '<%= paths.src %>',
         flow: {
-          steps: {'js': ['concat'], 'css': ['concat'] },
+          steps: {'js': ['concat'] },
           post: {}
         }
       }
@@ -31,20 +31,11 @@ module.exports = function(grunt) {
       html: '<%= paths.dist %>/*.html'
     },
 
-    autoprefixer: {
-      options: {
-        cascade: true
-      },
-
-      dist: {
-        expand: true,
-        flatten: true,
-        src: '<%= paths.dist %>/css/*.css',
-        dest: '<%= paths.dist %>/css/'
-      }
+    clean: {
+      tmp: { src: ['.tmp'] },
+      dist: { src: ['<%= paths.dist %>'] }
     },
 
-    // JS
     copy: {
       html: {
         cwd: '<%= paths.src %>/',
@@ -54,6 +45,29 @@ module.exports = function(grunt) {
       }
     },
 
+    // CSS
+    sass: {
+      dist: {
+        options: {
+          style: 'expanded'
+        },
+
+        files: {
+          '<%= paths.dist %>/css/jquery.form.css': '<%= paths.src %>/scss/jquery.form.scss'
+        }
+      },
+      distMin: {
+        options: {
+          style: 'compressed'
+        },
+
+        files: {
+          '<%= paths.dist %>/css/jquery.form.min.css': '<%= paths.src %>/scss/jquery.form.scss'
+        }
+      }
+    },
+
+    // JS
     jshint: {
       options: {
         jshintrc: true,
@@ -61,6 +75,17 @@ module.exports = function(grunt) {
       },
       src: {
         src: ['<%= paths.src %>/js/main.js'],
+      }
+    },
+
+    uglify: {
+      options: {
+        preserveComments: 'some'
+      },
+      dist: {
+        files: {
+          '<%= paths.dist %>/js/jquery.form.min.js': ['<%= paths.dist %>/js/jquery.form.js']
+        }
       }
     },
 
@@ -77,6 +102,13 @@ module.exports = function(grunt) {
     },
 
     notify: {
+      scss: {
+        options: {
+          title: 'Task complete',
+          message: 'SCSS compile completed'
+        }
+      },
+
       js: {
         options: {
           title: 'Task complete',
@@ -94,8 +126,9 @@ module.exports = function(grunt) {
 
     // Watch
     watch: {
-      css: {
-        files: ['<%= paths.src %>/css/**/*.css'],
+      scss: {
+        files: ['<%= paths.src %>/scss/**/*.scss'],
+        tasks: ['sass', 'autoprefixer', 'notify:scss'],
         options: {
           livereload: true
         }
@@ -120,14 +153,18 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('build', [
+    'clean:dist',
+
     // HTML
     'copy:html',
     'useminPrepare',
     'concat',
+    'uglify',
     'usemin',
+    'clean:tmp',
 
     // CSS
-    'autoprefixer:dist',
+    'sass',
 
     // Images
     'imagemin',

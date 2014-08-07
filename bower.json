@@ -6,7 +6,10 @@
     "XHTMLized <hello@xhtmlized.com>"
   ],
   "description": "Custom form elements styles and polyfills",
-  "main": "dist/jquery.form.js",
+  "main": [
+    "dist/js/jquery.form.js",
+    "dist/css/jquery.form.css"
+  ],
   "keywords": [
     "custom",
     "form",
@@ -22,6 +25,8 @@
     "test",
     "tests",
     "*.md",
+    ".gitignore",
+    ".editorconfig",
     "Gruntfile.js",
     "package.json"
   ],
