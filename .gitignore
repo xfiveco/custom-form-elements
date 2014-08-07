@@ -1,3 +1,8 @@
+# Files to ignore
 .DS_Store
+
+# Folders to ignore
+.sass-cache
+.tmp
 node_modules
 bower_components
