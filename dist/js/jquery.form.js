@@ -1303,7 +1303,6 @@ JSized.Ui.Form.Select.prototype.toggle = function (e) {
 JSized.Ui.Form.Select.prototype.open = function (e) {
 	this.container.addClass('open');
 	this.isOpen = true;
-	this.selectedIndex = this.element[0].selectedIndex = -1;
 
 	if (this.options.defaultTextOnOpen) {
 		this.selected.html(this.options.defaultText);
