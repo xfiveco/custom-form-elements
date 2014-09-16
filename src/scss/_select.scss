@@ -3,25 +3,26 @@
   width: 260px;
   z-index: 100;
   font-size: 0.85em;
-  border: 1px solid #bfbfbf;
 
   .current-selected {
     display: block;
     cursor: pointer;
     padding: 0 40px 0 10px;
+    border: 1px solid #bfbfbf;
     height: 26px;
     line-height: 26px;
     color: #000;
     text-decoration: none;
     background: url(../img/bg_custom_select_selected.png) right center no-repeat;
   }
+}
 
-  .custom-select-wrapper {
-    position: absolute;
-    left: -999em;
-    z-index: 100;
-    width: 100%;
-  }
+.custom-select-wrapper {
+  position: absolute;
+  left: -999em;
+  z-index: 100;
+  width: 260px;
+  box-sizing: border-box;
 
   .bottom {
     width: 260px;
@@ -58,11 +59,9 @@
   }
 
   &.open {
-    .custom-select-wrapper {
-      left: auto;
-      background: #fff;
-      border: 1px solid #bfbfbf;
-      margin-left: -1px;
-    }
+    left: auto;
+    background: #fff;
+    border: 1px solid #bfbfbf;
+    margin-top: -1px;
   }
 }
