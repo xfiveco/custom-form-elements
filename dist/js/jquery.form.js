@@ -1310,8 +1310,8 @@ JSized.Ui.Form.Select.prototype.open = function (e) {
   var ctOffset = this.container.offset();
   var ap = this.wrapper.offsetParent();
   var apOffset = ap.offset();
-  var top = ctOffset.top + this.container.outerHeight() - apOffset.top - ap.css('borderTopWidth');
-  var left = ctOffset.left - apOffset.left - ap.css('borderLeftWidth');
+  var top = ctOffset.top + this.container.outerHeight() - apOffset.top - parseFloat(ap.css('borderTopWidth'), 10);
+  var left = ctOffset.left - apOffset.left - parseFloat(ap.css('borderLeftWidth'), 10);
 
   this.container.addClass('open');
   this.wrapper.addClass('open').css({
