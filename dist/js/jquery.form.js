@@ -1308,14 +1308,16 @@ JSized.Ui.Form.Select.prototype.toggle = function (e) {
 
 JSized.Ui.Form.Select.prototype.open = function (e) {
   var ctOffset = this.container.offset();
-  var apOffset = this.wrapper.offsetParent().offset();
-  var top = ctOffset.top + this.container.outerHeight() - apOffset.top;
-  var left = ctOffset.left - apOffset.left;
+  var ap = this.wrapper.offsetParent();
+  var apOffset = ap.offset();
+  var top = ctOffset.top + this.container.outerHeight() - apOffset.top - ap.css('borderTopWidth');
+  var left = ctOffset.left - apOffset.left - ap.css('borderLeftWidth');
 
   this.container.addClass('open');
   this.wrapper.addClass('open').css({
     top: top,
-    left: left
+    left: left,
+    width: this.container.outerWidth()
   });
   this.isOpen = true;
 
@@ -1332,7 +1334,8 @@ JSized.Ui.Form.Select.prototype.close = function (e) {
   this.container.removeClass('open');
   this.wrapper.removeClass('open').css({
     top: '',
-    left: ''
+    left: '',
+    width: ''
   });
   this.optList.find('.current').removeClass('current');
 /*  jQuery(this.optListEntries).removeClass('selected'); */
